@@ -19,14 +19,6 @@ public class HdCounter {
 		}
 	}
 
-	public static void main(String[] args) throws IOException {
-		File portDir = new File("/Volumes/DATAPOT/JavaScript");
-		File[] portFileArr = portDir.listFiles();
-		for (File portFile : portFileArr) {
-			listFile(portFile);
-		}
-	}
-
 	public static void listFile(File portFile) {
 		if (portFile == null) {
 			return;
@@ -80,5 +72,13 @@ public class HdCounter {
 			byteNum = byteNum >> 1;
 		}
 		return count;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		File portDir = new File("/Volumes/DATAPOT/JavaScript");
+		File[] portFileArr = portDir.listFiles();
+		for (File portFile : portFileArr) {
+			listFile(portFile);
+		}
 	}
 }
