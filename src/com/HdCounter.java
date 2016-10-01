@@ -58,8 +58,7 @@ public class HdCounter {
 			}
 			totalZero += zero;
 			totalOne += one;
-			System.out.println("totalOne : " + totalOne + " totalZero : " + totalZero + " Current File : "
-					+ portFile.getAbsolutePath());
+			System.out.println(" Current File Path is: "+ portFile.getAbsolutePath());
 		}
 	}
 
@@ -75,10 +74,14 @@ public class HdCounter {
 	}
 	
 	public static void main(String[] args) throws IOException {
+		long startTime=System.currentTimeMillis();   //获取开始时间  
 		File portDir = new File("/Volumes/DATAPOT/JavaScript");
 		File[] portFileArr = portDir.listFiles();
 		for (File portFile : portFileArr) {
 			listFile(portFile);
 		}
+		System.out.println("totalOne : " + totalOne + " totalZero : " + totalZero );
+		long endTime=System.currentTimeMillis(); //获取结束时间  
+		System.out.println("程序运行时间： "+(endTime-startTime)+"ms");   
 	}
 }
