@@ -10,7 +10,8 @@ import java.util.List;
 public class HdCounter {
 	public static long totalOne = 0;
 	public static long totalZero = 0;
-	public static List<Integer> oneList = new ArrayList<Integer>(256);
+	public static int fileIndex = 0;
+	public static List<Integer> oneList = new ArrayList<Integer>();
 
 	static {
 		for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++) {
@@ -27,12 +28,16 @@ public class HdCounter {
 				listFile(temp);
 			}
 		} else {
+			fileIndex++;
+			int num = fileIndex ;
+			System.out.println("This is the Num:"+num+" File");
 			FileInputStream fis = null;
 			int zero = 0;
 			int one = 0;
 			byte[] tempArr = null;
 			try {
 				int length = (int) portFile.length();
+				System.out.println("File byte Length is "+length);
 				if (length > 0) {
 					tempArr = new byte[length];
 					fis = new FileInputStream(portFile);
@@ -75,7 +80,7 @@ public class HdCounter {
 	
 	public static void main(String[] args) throws IOException {
 		long startTime=System.currentTimeMillis();   //获取开始时间  
-		File portDir = new File("/Volumes/DATAPOT/JavaScript");
+		File portDir = new File("/Volumes/DATAPOT/SVN dump/test");
 		File[] portFileArr = portDir.listFiles();
 		for (File portFile : portFileArr) {
 			listFile(portFile);
